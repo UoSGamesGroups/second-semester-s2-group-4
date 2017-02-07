@@ -117,7 +117,19 @@ public class MeshGen : MonoBehaviour
             
             Mesh mesh = filter.mesh;
             GenerateSegment(index, ref mesh);
-            
+
+            ////////////var edgeCollider = filter.GetComponent<EdgeCollider2D>();
+            ////////////var vertices = mesh.vertices;
+            ////////////var collisionVerts = new Vector2[SegmentResolution];
+
+            ////////////for (int i = 0; i < SegmentResolution; i++)
+            ////////////{
+            ////////////    collisionVerts[i].x = vertices[i * 2].x;
+            ////////////    collisionVerts[i].y = vertices[i * 2].y;
+            ////////////}
+
+            ////////////edgeCollider.points = collisionVerts;
+
             filter.transform.position = new Vector3(index * SegmentLength, -3, 0);
             filter.gameObject.SetActive(true);
             
