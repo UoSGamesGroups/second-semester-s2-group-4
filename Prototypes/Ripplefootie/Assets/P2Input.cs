@@ -19,14 +19,14 @@ public class P2Input : MonoBehaviour
     private Transform m_GroundCheck;    // A position marking where to check if the player is grounded.
     const float k_GroundedRadius = .2f; // Radius of the overlap circle to determine if grounded
     private bool m_Grounded;
-    private Animator anim;
+   // private Animator anim;
     private Rigidbody2D rb;
 
 
     // Use this for initialization
     void Awake()
     {
-        anim = GetComponent<Animator>();
+      //  anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         m_GroundCheck = transform.Find("GroundCheck");
     }
@@ -43,7 +43,7 @@ public class P2Input : MonoBehaviour
             if (colliders[i].gameObject != gameObject)
                 m_Grounded = true;
         }
-        anim.SetBool("Ground", m_Grounded);
+        //anim.SetBool("Ground", m_Grounded);
 
 
 
@@ -59,7 +59,7 @@ public class P2Input : MonoBehaviour
         float h = Input.GetAxis("Horizontal2");
 
 
-        anim.SetFloat("Speed", Mathf.Abs(h));
+        //anim.SetFloat("Speed", Mathf.Abs(h));
 
         if (h * rb.velocity.x < maxSpeed)
             rb.AddForce(Vector2.right * h * moveSpeed);
@@ -74,10 +74,10 @@ public class P2Input : MonoBehaviour
 
 
         //Jump
-        if (Input.GetKey(KeyCode.UpArrow) && m_Grounded && anim.GetBool("Ground"))
+        if (Input.GetKey(KeyCode.UpArrow) && m_Grounded) //&& anim.GetBool("Ground"))
         {
             m_Grounded = false;
-            anim.SetBool("Ground", false);
+            //anim.SetBool("Ground", false);
             Jump();
         }
 
