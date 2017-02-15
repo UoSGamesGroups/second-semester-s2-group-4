@@ -53,11 +53,11 @@ public class RedGoal : MonoBehaviour {
 
 	}
 
-    void OnCollision2DEnter(Collider2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Ball")
         {
-           
+            Debug.Log("Ball Red");
             redScore += 1;
             scoreChange = true;
             ResetSlider();

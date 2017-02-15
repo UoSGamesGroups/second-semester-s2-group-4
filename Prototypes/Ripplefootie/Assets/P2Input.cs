@@ -74,7 +74,7 @@ public class P2Input : MonoBehaviour
 
 
         //Jump
-        if (Input.GetKey(KeyCode.UpArrow) && m_Grounded) //&& anim.GetBool("Ground"))
+        if (Input.GetKey(KeyCode.W) && m_Grounded) //&& anim.GetBool("Ground"))
         {
             m_Grounded = false;
             //anim.SetBool("Ground", false);

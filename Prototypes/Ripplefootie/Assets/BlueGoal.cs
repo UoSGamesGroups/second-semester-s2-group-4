@@ -28,10 +28,11 @@ public class BlueGoal : MonoBehaviour
 
     }
 
-    void OnCollision2DEnter(Collider2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Ball")
         {
+            Debug.Log("Ball Blue");
             redGoalScript.blueScore += 1;
             redGoalScript.scoreChange = true;
 
