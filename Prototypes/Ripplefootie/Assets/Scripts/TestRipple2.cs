@@ -9,6 +9,8 @@ public class TestRipple2 : MonoBehaviour {
     // Number of horizontal segments
     public int SegmentResolution;
 
+    public float angleIncrement;
+
     public Vector3[] _VertexArray;
 
     public float StartPosition;
@@ -175,7 +177,7 @@ public class TestRipple2 : MonoBehaviour {
         }
 
         mesh.vertices = _VertexArray;
-        angle += 0.01f;
+        angle += angleIncrement;
 
         vertices = mesh.vertices;
         for (int i = 0; i < SegmentResolution; i++)

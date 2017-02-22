@@ -26,12 +26,14 @@ public class GoalDetection : MonoBehaviour
             {
                 GoalControllerScript.redScore += 1;
                 GoalControllerScript.sliderScore++;
+                GoalControllerScript.scoreChange = true;
                 Debug.Log("Red Goal!");
             }
             if (!isRedGoal)
             {
                 GoalControllerScript.blueScore += 1;
                 GoalControllerScript.sliderScore--;
+                GoalControllerScript.scoreChange = true;
                 Debug.Log("Blue Goal!");
 
             }
