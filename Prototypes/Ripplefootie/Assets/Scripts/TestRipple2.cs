@@ -159,7 +159,7 @@ public class TestRipple2 : MonoBehaviour {
         //}
 
 
-        for (int i = 0; i < SegmentResolution/2; ++i)
+        for (int i = 0; i < SegmentResolution; ++i)
         {
             
            // get the relative x position
@@ -172,8 +172,8 @@ public class TestRipple2 : MonoBehaviour {
             // bottom vertex always at y=0
             _VertexArray[i * 2 + 1] = new Vector3(xPos, 0, 0);
 
-            _VertexArray[(SegmentResolution - i) * 2 - 1].y = _VertexArray[i * 2 + 1].y;
-            _VertexArray[(SegmentResolution - i) * 2 - 2].y = _VertexArray[i * 2].y;
+            //_VertexArray[(SegmentResolution - i) * 2 - 1].y = _VertexArray[i * 2 + 1].y;
+            //_VertexArray[(SegmentResolution - i) * 2 - 2].y = _VertexArray[i * 2].y;
         }
 
         mesh.vertices = _VertexArray;
