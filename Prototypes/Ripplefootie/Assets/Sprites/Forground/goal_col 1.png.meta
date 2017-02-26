@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 18b5fdd82f600bf4a9f4727dfb5876ce
-timeCreated: 1487451710
+timeCreated: 1488031569
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -101,10 +101,10 @@ TextureImporter:
       name: goal_col 1_0
       rect:
         serializedVersion: 2
-        x: 29
-        y: 94
-        width: 112
-        height: 318
+        x: 0
+        y: 116
+        width: 255
+        height: 303
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -114,36 +114,10 @@ TextureImporter:
       name: goal_col 1_1
       rect:
         serializedVersion: 2
-        x: 172
-        y: 94
-        width: 112
-        height: 318
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: goal_col 1_2
-      rect:
-        serializedVersion: 2
-        x: 126
-        y: 16
-        width: 30
-        height: 29
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: goal_col 1_3
-      rect:
-        serializedVersion: 2
-        x: 176
-        y: 16
-        width: 29
-        height: 29
+        x: 258
+        y: 116
+        width: 254
+        height: 303
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
