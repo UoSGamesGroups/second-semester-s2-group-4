@@ -29,6 +29,8 @@ public class GoalController : MonoBehaviour {
     Vector3 player1OriginPos;
     Vector3 player2OriginPos;
 
+    GameObject waveController;
+    TestRipple2 waveControllerScript;
 
     // Use this for initialization
     void Start ()
@@ -41,6 +43,8 @@ public class GoalController : MonoBehaviour {
         //Starts the timer Coroutine
         StartCoroutine(Timer());
 
+        waveController = GameObject.Find("WaveOrigin");
+        waveControllerScript = waveController.GetComponent<TestRipple2>();
     }
 	
 	// Update is called once per frame
@@ -51,6 +55,7 @@ public class GoalController : MonoBehaviour {
         if (scoreChange)
         {
             resetBall();
+            changeWave();
         }
         if (scoreSlider.value == scoreSlider.minValue)
         {
@@ -77,6 +82,25 @@ public class GoalController : MonoBehaviour {
         scoreChange = false;
     }
 
+    void changeWave()
+    {
+
+        if(sliderScore == 0)
+        {
+            waveControllerScript.angleIncrement = 0.0f;
+        }
+        //Blue Advantage
+        if (sliderScore < 0)
+        {
+            waveControllerScript.angleIncrement = sliderScore / 100;
+        }
+        //Red advantage
+        if (sliderScore > 0)
+        {
+            waveControllerScript.angleIncrement = sliderScore / 100;
+        }
+
+    }
     //Sets outofbounds objects back to their origin points
     void OnTriggerEnter2D(Collider2D other)
     {
