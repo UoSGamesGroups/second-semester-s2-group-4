@@ -54,17 +54,21 @@ public class GoalController : MonoBehaviour {
         scoreSlider.value = sliderScore;
         if (scoreChange)
         {
+            //Debug.Log("Resetting Ball");
             resetBall();
+            //Debug.Log("Ball Reset, changing wave...");
             changeWave();
+            //Debug.Log("Wave Changed");
+            scoreChange = false;
         }
         if (scoreSlider.value == scoreSlider.minValue)
         {
-            Debug.Log("Blue Wins");
+            //Debug.Log("Blue Wins");
         }
 
         if (scoreSlider.value == scoreSlider.maxValue)
         {
-            Debug.Log("Red Wins");
+            //Debug.Log("Red Wins");
         }
 
         //if (Input.GetButtonDown("Jump"))
@@ -77,9 +81,10 @@ public class GoalController : MonoBehaviour {
 
     void resetBall()
     {
+        Debug.Log("Resetting Ball");
         ball.transform.position = ballOriginPos;
         ball.GetComponent<Rigidbody2D>().velocity = new Vector2(0.0f, 0.0f);
-        scoreChange = false;
+
     }
 
     void changeWave()
@@ -90,12 +95,12 @@ public class GoalController : MonoBehaviour {
             waveControllerScript.angleIncrement = 0.0f;
         }
         //Blue Advantage
-        if (sliderScore < 0)
+        if (sliderScore > 0)
         {
             waveControllerScript.angleIncrement = sliderScore / 100;
         }
         //Red advantage
-        if (sliderScore > 0)
+        if (sliderScore < 0)
         {
             waveControllerScript.angleIncrement = sliderScore / 100;
         }

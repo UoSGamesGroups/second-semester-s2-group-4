@@ -4,7 +4,7 @@ using System.Collections;
 //For character movement, keys are (ideally)rebindable, so only one script is needed
 //isGrounded code: http://answers.unity3d.com/questions/149790/checking-if-grounded-on-rigidbody.html
 
-public class CharacterController : MonoBehaviour
+public class PCController : MonoBehaviour
 {
     public KeyCode kcRight = KeyCode.RightArrow;
     public KeyCode kcLeft = KeyCode.LeftArrow;
@@ -15,7 +15,7 @@ public class CharacterController : MonoBehaviour
     //The amount of force applied on a jump
     public float jumpSpeed;
     //A bool to check if the player is currently grounded
-    bool isGrounded = false;
+    public bool isGrounded = false;
     private Rigidbody2D RigidB;
 
     // Use this for initialization
@@ -27,14 +27,23 @@ public class CharacterController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        float unmodifiedMoveSpeed = moveSpeed;
         //Move Right
         if (Input.GetKey(kcRight))
         {
+            if (isGrounded == false)
+            {
+                unmodifiedMoveSpeed = unmodifiedMoveSpeed / 2;
+            }
             RigidB.AddForce(new Vector2(moveSpeed, 0), ForceMode2D.Force);
         }
         //Move Left
         if (Input.GetKey(kcLeft))
         {
+            if (isGrounded == false)
+            {
+                unmodifiedMoveSpeed = unmodifiedMoveSpeed / 2;
+            }
             RigidB.AddForce(new Vector2(-moveSpeed, 0), ForceMode2D.Force);
         }
         //Jump
@@ -43,18 +52,24 @@ public class CharacterController : MonoBehaviour
             Debug.Log("Should be jumping");
             RigidB.velocity = new Vector2(0, jumpSpeed);
         }
-
-
-
     }
-    void OnCollisionStay(Collision collisionInfo)
+
+
+
+    void OnCollisionEnter2D(Collision2D Collider)
     {
-        isGrounded = true;
+        //If the there is a collider and its not the ball, and isGrounded isn't already true
+        if (Collider.collider == true && Collider.gameObject.tag != "Ball" && isGrounded != true)
+        {
+            isGrounded = true;
+        }
     }
 
-    void OnCollisionExit(Collision collisionInfo)
+    void OnCollisionExit2D(Collision2D Collider)
     {
-        isGrounded = false;
+        //if (Collider.collider == false && Collider.gameObject.tag != "Ball")
+        //{
+            isGrounded = false;
+        //}
     }
-
 }
