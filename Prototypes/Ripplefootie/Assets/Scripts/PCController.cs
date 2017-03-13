@@ -27,6 +27,7 @@ public class PCController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+
         float unmodifiedMoveSpeed = moveSpeed;
         //Move Right
         if (Input.GetKey(kcRight))
@@ -35,7 +36,7 @@ public class PCController : MonoBehaviour
             {
                 unmodifiedMoveSpeed = unmodifiedMoveSpeed / 2;
             }
-            RigidB.AddForce(new Vector2(moveSpeed, 0), ForceMode2D.Force);
+            RigidB.AddForce(new Vector2(unmodifiedMoveSpeed, 0), ForceMode2D.Force);
         }
         //Move Left
         if (Input.GetKey(kcLeft))
@@ -44,13 +45,14 @@ public class PCController : MonoBehaviour
             {
                 unmodifiedMoveSpeed = unmodifiedMoveSpeed / 2;
             }
-            RigidB.AddForce(new Vector2(-moveSpeed, 0), ForceMode2D.Force);
+            RigidB.AddForce(new Vector2(-unmodifiedMoveSpeed, 0), ForceMode2D.Force);
         }
         //Jump
-        if (Input.GetKeyDown(kcUp))
+        if (Input.GetKeyDown(kcUp) && isGrounded == true)
         {
             Debug.Log("Should be jumping");
-            RigidB.velocity = new Vector2(0, jumpSpeed);
+            GetComponent<Rigidbody2D>().AddForce(Vector2.up * jumpSpeed, ForceMode2D.Impulse);
+            isGrounded = false;
         }
     }
 
@@ -67,9 +69,9 @@ public class PCController : MonoBehaviour
 
     void OnCollisionExit2D(Collision2D Collider)
     {
-        //if (Collider.collider == false && Collider.gameObject.tag != "Ball")
-        //{
+        if (Collider.collider == true && Collider.gameObject.tag != "Ball")
+        {
             isGrounded = false;
-        //}
+        }
     }
 }
