@@ -27,31 +27,24 @@ public class PCController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-
         float unmodifiedMoveSpeed = moveSpeed;
         //Move Right
         if (Input.GetKey(kcRight))
         {
-            if (isGrounded == false)
-            {
-                unmodifiedMoveSpeed = unmodifiedMoveSpeed / 2;
-            }
-            RigidB.AddForce(new Vector2(unmodifiedMoveSpeed, 0), ForceMode2D.Force);
+            RigidB.AddForce(new Vector2(moveSpeed, 0), ForceMode2D.Force);
+
         }
         //Move Left
         if (Input.GetKey(kcLeft))
         {
-            if (isGrounded == false)
-            {
-                unmodifiedMoveSpeed = unmodifiedMoveSpeed / 2;
-            }
-            RigidB.AddForce(new Vector2(-unmodifiedMoveSpeed, 0), ForceMode2D.Force);
+            RigidB.AddForce(new Vector2(-moveSpeed, 0), ForceMode2D.Force);
         }
         //Jump
         if (Input.GetKeyDown(kcUp) && isGrounded == true)
         {
             Debug.Log("Should be jumping");
-            GetComponent<Rigidbody2D>().AddForce(Vector2.up * jumpSpeed, ForceMode2D.Impulse);
+            RigidB.AddForce(new Vector2(0, jumpSpeed)/*, ForceMode2D.Impulse*/);
+            //GetComponent<Rigidbody2D>().AddForce(Vector2.up * jumpSpeed, ForceMode2D.Impulse);
             isGrounded = false;
         }
     }
