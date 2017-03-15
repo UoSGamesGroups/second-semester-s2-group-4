@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-//For character movement, keys are (ideally)rebindable, so only one script is needed
+//For character movement, keys are (ideally) rebindable, so only one script is needed
 //isGrounded code: http://answers.unity3d.com/questions/149790/checking-if-grounded-on-rigidbody.html
 
 public class PCController : MonoBehaviour
@@ -9,6 +9,9 @@ public class PCController : MonoBehaviour
     public KeyCode kcRight = KeyCode.RightArrow;
     public KeyCode kcLeft = KeyCode.LeftArrow;
     public KeyCode kcUp = KeyCode.UpArrow;
+    public KeyCode kcDown = KeyCode.DownArrow;
+    public KeyCode kcKick = KeyCode.Space;
+    public float KickSpeed = 10;
 
     //The amount of force applied per frame to the rigidbody
     public float moveSpeed;
@@ -40,31 +43,49 @@ public class PCController : MonoBehaviour
             RigidB.AddForce(new Vector2(-moveSpeed, 0), ForceMode2D.Force);
         }
         //Jump
-        if (Input.GetKeyDown(kcUp) && isGrounded == true)
+        if (Input.GetKey(kcUp) && isGrounded == true)
         {
+            isGrounded = false;
             Debug.Log("Should be jumping");
             RigidB.AddForce(new Vector2(0, jumpSpeed)/*, ForceMode2D.Impulse*/);
             //GetComponent<Rigidbody2D>().AddForce(Vector2.up * jumpSpeed, ForceMode2D.Impulse);
-            isGrounded = false;
         }
+        //force downward
+        if (Input.GetKeyDown(kcDown)&&isGrounded == false)
+        {
+            RigidB.AddForce(new Vector2(0, -jumpSpeed/2));
+        }
+
     }
 
-
-
-    void OnCollisionEnter2D(Collision2D Collider)
+    void OnCollisionStay2D(Collision2D Collider)
     {
-        //If the there is a collider and its not the ball, and isGrounded isn't already true
-        if (Collider.collider == true && Collider.gameObject.tag != "Ball" && isGrounded != true)
+        if (Collider.gameObject.tag == "gROUND")
         {
             isGrounded = true;
         }
+
     }
 
     void OnCollisionExit2D(Collision2D Collider)
     {
-        if (Collider.collider == true && Collider.gameObject.tag != "Ball")
+        if (Collider.gameObject.tag == "gROUND")
         {
             isGrounded = false;
+        }
+    }
+
+    void OnTriggerStay2D(Collider2D Collider)
+    {
+        //Kick
+        if (Input.GetKeyDown(kcKick) && Collider.gameObject.tag == "Ball")
+        {
+            Rigidbody2D BallRB = Collider.gameObject.GetComponent<Rigidbody2D>();
+            Vector2 BallForce = Collider.gameObject.transform.position - this.transform.position;// ball -player
+            float Magnitude = Mathf.Sqrt(Mathf.Pow(BallForce.x, 2) + Mathf.Pow(BallForce.y, 2));
+
+
+            BallRB.AddForce(new Vector2(KickSpeed * BallForce.x / Magnitude, KickSpeed * BallForce.y / Magnitude));
         }
     }
 }
