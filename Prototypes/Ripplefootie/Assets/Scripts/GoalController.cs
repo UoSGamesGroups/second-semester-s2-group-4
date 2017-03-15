@@ -32,6 +32,11 @@ public class GoalController : MonoBehaviour {
     GameObject waveController;
     TestRipple2 waveControllerScript;
 
+    //reference to main menu script
+    //to affect shown image on Game Over screen.
+    GameObject mainMenu;
+    MainMenu menuScript;
+
     // Use this for initialization
     void Start ()
     {
@@ -45,6 +50,9 @@ public class GoalController : MonoBehaviour {
 
         waveController = GameObject.Find("WaveOrigin");
         waveControllerScript = waveController.GetComponent<TestRipple2>();
+
+        mainMenu = GameObject.Find("MenuObject");
+        menuScript = mainMenu.GetComponent<MainMenu>();
     }
 	
 	// Update is called once per frame
@@ -63,12 +71,19 @@ public class GoalController : MonoBehaviour {
         }
         if (scoreSlider.value == scoreSlider.minValue)
         {
-            //Debug.Log("Blue Wins");
+            Debug.Log("Blue Wins");
+            menuScript.redWon = true;                    
+            menuScript.LoadByIndex(2);
+           
+            
         }
 
         if (scoreSlider.value == scoreSlider.maxValue)
         {
-            //Debug.Log("Red Wins");
+            Debug.Log("Red Wins");
+            menuScript.blueWon = true;         
+            menuScript.LoadByIndex(2);
+
         }
 
         //if (Input.GetButtonDown("Jump"))
@@ -84,6 +99,9 @@ public class GoalController : MonoBehaviour {
         Debug.Log("Resetting Ball");
         ball.transform.position = ballOriginPos;
         ball.GetComponent<Rigidbody2D>().velocity = new Vector2(0.0f, 0.0f);
+
+
+
 
     }
 
