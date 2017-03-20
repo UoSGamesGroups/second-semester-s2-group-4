@@ -9,37 +9,149 @@ public class GoalDetection : MonoBehaviour
     GameObject GoalControl;
     GoalController GoalControllerScript;
 
+    public float tempTimer = 1f;
 
     //variables for visual indicator
     //that a goal is scored
 
-    public GameObject fireworksRed01;
-    public GameObject fireworksRed02;
-    public GameObject fireworksBlue01;
-    public GameObject fireworksBlue02;
-
     public GameObject redScoreObject;
     public GameObject blueScoreObject;
+    private bool scoreActive = false;
+
+    //Ball fragments (for ball explosion when a goal is scored)
+    //array of gameobjects for red goal
+    public GameObject[] redfragmant;
+    public bool ballExploding = false;
+    public GameObject explosionRed;
+
+    //array of objects for blue goal
+    public GameObject[] blueFragment;
+    public bool blueballExploding = false;
+    public GameObject explosionBlue;
+
+    //Claw Script Reference
+    GameObject clawControl;
+    ClawScript clawScript;
 
     void Start()
     {
         GoalControl = GameObject.Find("Arena");
         GoalControllerScript = GoalControl.GetComponent<GoalController>();
 
+
+
         //Set all gameobjects to inactive
-        fireworksBlue01.SetActive(false);
-        fireworksBlue02.SetActive(false);
-        fireworksRed01.SetActive(false);
-        fireworksRed02.SetActive(false);
         redScoreObject.SetActive(false);
         blueScoreObject.SetActive(false);
+
+        //assign objects with tag "ball" to the array
+       redfragmant = GameObject.FindGameObjectsWithTag("ball");
+        blueFragment = GameObject.FindGameObjectsWithTag("blueBall");
+
+        //get references to claw script
+        clawControl = GameObject.Find("Claw");
+        clawScript = clawControl.GetComponent<ClawScript>();
+
+        //Debug.Log(fragmant.Length);
     }
+
+    void Update()
+    {
+
+        if (ballExploding)
+        {
+            
+            //for each object in fragmant array            
+            
+            foreach (GameObject i in redfragmant)
+            {
+                //get the rigidbody component
+                //activate objects
+                i.SetActive(true);
+                
+                //choose a random direction for each piece to move in
+                Vector2 randomDir = new Vector2(Random.Range(1,100), Random.Range(1,100));
+                //add force, in the forward direction * 100 force
+                 i.GetComponent<Rigidbody2D>().AddForce(randomDir * 100);
+
+                i.GetComponent<Rigidbody2D>().AddTorque(90);
+
+            }
+
+
+        }
+
+        if (blueballExploding)
+        {
+
+            //for each object in fragmant array            
+
+            foreach (GameObject i in blueFragment)
+            {
+                //get the rigidbody component
+                //activate objects
+                i.SetActive(true);
+                //choose a random direction for each piece to move in
+                Vector2 randomDir = new Vector2(Random.Range(1, 100), Random.Range(1, 100));
+                //add force, in the forward direction * 100 force
+                i.GetComponent<Rigidbody2D>().AddForce(randomDir * 100);
+                i.GetComponent<Rigidbody2D>().AddTorque(90);
+            }
+
+           
+
+
+            
+        }
+
+        //if the score popup is active
+        if (scoreActive)
+        {         
+            //use a timer
+            tempTimer -= Time.deltaTime;            
+            if (tempTimer <= 0.0f)
+            {
+                //if timer less than or equal to 0
+                //Set all gameobjects to inactive
+                redScoreObject.SetActive(false);
+                blueScoreObject.SetActive(false);
+                //set scoreActive to false to break the loop
+                scoreActive = false;
+                explosionBlue.SetActive(false);
+                explosionRed.SetActive(false);
+
+                blueballExploding = false;
+                ballExploding = false;
+                tempTimer = 1f;
+               
+
+            }
+            
+
+        }
+        //disable all ball fragmant objects
+        foreach (GameObject x in blueFragment)
+        {
+            x.SetActive(false);
+        }
+
+        ballExploding = false;
+        foreach (GameObject x in redfragmant)
+        {
+            x.SetActive(false);
+        }
+    }
+
+   
+
+
 
     //Detect when a ball enters the goal
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Ball")
-        {
+        {         
+            
             //Decision on which goal to add points to
             if (isRedGoal)
             {
@@ -47,39 +159,43 @@ public class GoalDetection : MonoBehaviour
                 GoalControllerScript.sliderScore--;
                 GoalControllerScript.scoreChange = true;
 
-               // fireworksRed01.SetActive(true);
-                fireworksRed02.SetActive(true);
                 redScoreObject.SetActive(true);
+                scoreActive = true;
 
 
+                //set ball Exploding to be true
+                ballExploding = true;
+                explosionRed.SetActive(true);            
+
+                //playing explosion animation
+                explosionRed.GetComponent<Animator>().SetTrigger("explode");
+                //set bool true to explode ball pieces
+                ballExploding = true;
                 Debug.Log("Red Goal!");
             }
+
             if (!isRedGoal)
             {
                 GoalControllerScript.blueScore += 1;
                 GoalControllerScript.sliderScore++;
                 GoalControllerScript.scoreChange = true;
 
-               // fireworksBlue01.SetActive(true);
-                fireworksBlue02.SetActive(true);
-                blueScoreObject.SetActive(true);
 
+                blueScoreObject.SetActive(true);
+                scoreActive = true;
+                blueballExploding = true;
+                explosionBlue.SetActive(true);
+                explosionBlue.GetComponent<Animator>().SetTrigger("explode");
                 Debug.Log("Blue Goal!");
 
+                //set bool true to explode ball pieces
+                blueballExploding = true;
             }
-            //Set all gameobjects to inactive
-            fireworksBlue01.SetActive(false);
-            fireworksBlue02.SetActive(false);
-            fireworksRed01.SetActive(false);
-            fireworksRed02.SetActive(false);
-            redScoreObject.SetActive(false);
-            blueScoreObject.SetActive(false);
-
+            clawScript.dropClaw = true;
             GoalControllerScript.Reset();
 
-
-
         }
+        
     }
 
 

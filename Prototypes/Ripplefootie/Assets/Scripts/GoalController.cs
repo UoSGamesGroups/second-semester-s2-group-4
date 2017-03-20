@@ -37,6 +37,8 @@ public class GoalController : MonoBehaviour {
     GameObject mainMenu;
     MainMenu menuScript;
 
+
+
     // Use this for initialization
     void Start ()
     {
@@ -53,6 +55,8 @@ public class GoalController : MonoBehaviour {
 
         mainMenu = GameObject.Find("MenuObject");
         menuScript = mainMenu.GetComponent<MainMenu>();
+
+
     }
 	
 	// Update is called once per frame
@@ -98,8 +102,7 @@ public class GoalController : MonoBehaviour {
     {
         Debug.Log("Resetting Ball");
         ball.transform.position = ballOriginPos;
-        ball.GetComponent<Rigidbody2D>().velocity = new Vector2(0.0f, 0.0f);
-
+        ball.GetComponent<Rigidbody2D>().velocity = new Vector2(0.0f, 0.0f);  
 
 
 
