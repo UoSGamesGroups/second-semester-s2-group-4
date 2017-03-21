@@ -33,11 +33,19 @@ public class GoalDetection : MonoBehaviour
     GameObject clawControl;
     ClawScript clawScript;
 
+    //reference to border scaling colours
+    public GameObject redCol;
+    public GameObject blueCol;
+
+    //audio source
+    AudioSource audioS;
+
     void Start()
     {
         GoalControl = GameObject.Find("Arena");
         GoalControllerScript = GoalControl.GetComponent<GoalController>();
 
+        audioS = GetComponent<AudioSource>();
 
 
         //Set all gameobjects to inactive
@@ -150,7 +158,7 @@ public class GoalDetection : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Ball")
-        {         
+        {
             
             //Decision on which goal to add points to
             if (isRedGoal)
@@ -159,9 +167,14 @@ public class GoalDetection : MonoBehaviour
                 GoalControllerScript.sliderScore--;
                 GoalControllerScript.scoreChange = true;
 
+                //scale border colour
+                blueCol.transform.localScale -= new Vector3(0.1f, 0, 0);
+
+                audioS.Play();
+
                 redScoreObject.SetActive(true);
                 scoreActive = true;
-
+                clawScript.dropClaw = true;
 
                 //set ball Exploding to be true
                 ballExploding = true;
@@ -171,6 +184,7 @@ public class GoalDetection : MonoBehaviour
                 explosionRed.GetComponent<Animator>().SetTrigger("explode");
                 //set bool true to explode ball pieces
                 ballExploding = true;
+               
                 Debug.Log("Red Goal!");
             }
 
@@ -180,20 +194,27 @@ public class GoalDetection : MonoBehaviour
                 GoalControllerScript.sliderScore++;
                 GoalControllerScript.scoreChange = true;
 
+                //scale border colour
+                blueCol.transform.localScale += new Vector3(0.1f, 0, 0);
 
+                audioS.Play();
+
+                clawScript.dropClaw = true;
                 blueScoreObject.SetActive(true);
                 scoreActive = true;
                 blueballExploding = true;
                 explosionBlue.SetActive(true);
+                
                 explosionBlue.GetComponent<Animator>().SetTrigger("explode");
                 Debug.Log("Blue Goal!");
 
                 //set bool true to explode ball pieces
                 blueballExploding = true;
+               
             }
-            clawScript.dropClaw = true;
+            
             GoalControllerScript.Reset();
-
+            
         }
         
     }

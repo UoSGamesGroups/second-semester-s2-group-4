@@ -21,10 +21,14 @@ public class PCController : MonoBehaviour
     public bool isGrounded = false;
     private Rigidbody2D RigidB;
 
+    //audio source
+    AudioSource audioS;
+
     // Use this for initialization
     void Start()
     {
         RigidB = GetComponent<Rigidbody2D>();
+        audioS = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -49,6 +53,7 @@ public class PCController : MonoBehaviour
             Debug.Log("Should be jumping");
             RigidB.AddForce(new Vector2(0, jumpSpeed)/*, ForceMode2D.Impulse*/);
             //GetComponent<Rigidbody2D>().AddForce(Vector2.up * jumpSpeed, ForceMode2D.Impulse);
+            audioS.Play();
         }
         //force downward
         if (Input.GetKeyDown(kcDown)&&isGrounded == false)

@@ -14,6 +14,10 @@ public class GoalController : MonoBehaviour {
     //Holds the number of goals represented on the slider bar
     public float sliderScore;
 
+
+
+
+
     public GameObject ball;
     public GameObject player1;
     public GameObject player2;
@@ -86,7 +90,7 @@ public class GoalController : MonoBehaviour {
         {
             Debug.Log("Red Wins");
             menuScript.blueWon = true;         
-            menuScript.LoadByIndex(2);
+            menuScript.LoadByIndex(3);
 
         }
 
