@@ -163,6 +163,7 @@ public class GoalDetection : MonoBehaviour
             //Decision on which goal to add points to
             if (isRedGoal)
             {
+                clawScript.dropClaw = true;
                 GoalControllerScript.redScore += 1;
                 GoalControllerScript.sliderScore--;
                 GoalControllerScript.scoreChange = true;
@@ -174,7 +175,7 @@ public class GoalDetection : MonoBehaviour
 
                 redScoreObject.SetActive(true);
                 scoreActive = true;
-                clawScript.dropClaw = true;
+                
 
                 //set ball Exploding to be true
                 ballExploding = true;
@@ -190,6 +191,8 @@ public class GoalDetection : MonoBehaviour
 
             if (!isRedGoal)
             {
+                clawScript.dropClaw = true;
+
                 GoalControllerScript.blueScore += 1;
                 GoalControllerScript.sliderScore++;
                 GoalControllerScript.scoreChange = true;
@@ -199,7 +202,7 @@ public class GoalDetection : MonoBehaviour
 
                 audioS.Play();
 
-                clawScript.dropClaw = true;
+                
                 blueScoreObject.SetActive(true);
                 scoreActive = true;
                 blueballExploding = true;
