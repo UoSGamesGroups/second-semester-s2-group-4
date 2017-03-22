@@ -50,7 +50,7 @@ public class PCController : MonoBehaviour
         if (Input.GetKey(kcUp) && isGrounded == true)
         {
             isGrounded = false;
-            Debug.Log("Should be jumping");
+            //Debug.Log("Should be jumping");
             RigidB.AddForce(new Vector2(0, jumpSpeed)/*, ForceMode2D.Impulse*/);
             //GetComponent<Rigidbody2D>().AddForce(Vector2.up * jumpSpeed, ForceMode2D.Impulse);
             audioS.Play();

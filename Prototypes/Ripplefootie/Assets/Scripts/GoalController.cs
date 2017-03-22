@@ -15,18 +15,16 @@ public class GoalController : MonoBehaviour {
     public float sliderScore;
 
 
-
-
-
     public GameObject ball;
     public GameObject player1;
     public GameObject player2;
 
+    public Image blueBar;//The blue part of the background
+    public int maxGoals; // The number of goals needed to win
+
     public int timeTracker;
 
     public bool scoreChange = false;
-
-    public Slider scoreSlider;
 
 
     Vector3 ballOriginPos;
@@ -67,7 +65,7 @@ public class GoalController : MonoBehaviour {
 	void Update ()
     {
 
-        scoreSlider.value = sliderScore;
+        blueBar.fillAmount = sliderScore;
         if (scoreChange)
         {
             //Debug.Log("Resetting Ball");
@@ -77,7 +75,8 @@ public class GoalController : MonoBehaviour {
             //Debug.Log("Wave Changed");
             scoreChange = false;
         }
-        if (scoreSlider.value == scoreSlider.minValue)
+
+        if (blueBar.fillAmount <= 0)
         {
             Debug.Log("Blue Wins");
             menuScript.redWon = true;                    
@@ -86,7 +85,7 @@ public class GoalController : MonoBehaviour {
             
         }
 
-        if (scoreSlider.value == scoreSlider.maxValue)
+        if (blueBar.fillAmount >= 1)
         {
             Debug.Log("Red Wins");
             menuScript.blueWon = true;         
@@ -115,19 +114,19 @@ public class GoalController : MonoBehaviour {
     void changeWave()
     {
 
-        if(sliderScore == 0)
+        if(sliderScore == 0.5)
         {
             waveControllerScript.angleIncrement = 0.0f;
         }
         //Blue Advantage
-        if (sliderScore > 0)
+        if (sliderScore > 0.5)
         {
             waveControllerScript.angleIncrement = sliderScore / 100;
         }
         //Red advantage
-        if (sliderScore < 0)
+        if (sliderScore < 0.5)
         {
-            waveControllerScript.angleIncrement = sliderScore / 100;
+            waveControllerScript.angleIncrement = sliderScore / 10;
         }
 
     }

@@ -85,13 +85,10 @@ public class GoalDetection : MonoBehaviour
                 i.GetComponent<Rigidbody2D>().AddTorque(90);
 
             }
-
-
         }
 
         if (blueballExploding)
         {
-
             //for each object in fragmant array            
 
             foreach (GameObject i in blueFragment)
@@ -105,13 +102,7 @@ public class GoalDetection : MonoBehaviour
                 i.GetComponent<Rigidbody2D>().AddForce(randomDir * 100);
                 i.GetComponent<Rigidbody2D>().AddTorque(90);
             }
-
-           
-
-
-            
         }
-
         //if the score popup is active
         if (scoreActive)
         {         
@@ -131,11 +122,7 @@ public class GoalDetection : MonoBehaviour
                 blueballExploding = false;
                 ballExploding = false;
                 tempTimer = 1f;
-               
-
             }
-            
-
         }
         //disable all ball fragmant objects
         foreach (GameObject x in blueFragment)
@@ -165,11 +152,11 @@ public class GoalDetection : MonoBehaviour
             {
                 clawScript.dropClaw = true;
                 GoalControllerScript.redScore += 1;
-                GoalControllerScript.sliderScore--;
-                GoalControllerScript.scoreChange = true;
+                GoalControllerScript.sliderScore -= 1 / 6;
+                GoalControllerScript.scoreChange = true; //(GoalControllerScript.maxGoals * 2)
 
                 //scale border colour
-                blueCol.transform.localScale -= new Vector3(0.1f, 0, 0);
+                //blueCol.transform.localScale -= new Vector3(0.1f, 0, 0);
 
                 audioS.Play();
 
@@ -194,11 +181,11 @@ public class GoalDetection : MonoBehaviour
                 clawScript.dropClaw = true;
 
                 GoalControllerScript.blueScore += 1;
-                GoalControllerScript.sliderScore++;
+                GoalControllerScript.sliderScore = GoalControllerScript.sliderScore - (1 / 6);
                 GoalControllerScript.scoreChange = true;
 
                 //scale border colour
-                blueCol.transform.localScale += new Vector3(0.1f, 0, 0);
+                //blueCol.transform.localScale += new Vector3(0.1f, 0, 0);
 
                 audioS.Play();
 
