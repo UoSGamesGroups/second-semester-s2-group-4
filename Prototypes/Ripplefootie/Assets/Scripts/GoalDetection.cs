@@ -19,23 +19,18 @@ public class GoalDetection : MonoBehaviour
     private bool scoreActive = false;
 
     //Ball fragments (for ball explosion when a goal is scored)
-    //array of gameobjects for red goal
-    public GameObject[] redfragmant;
-    public bool ballExploding = false;
-    public GameObject explosionRed;
+    public GameObject redballFrags;
+    public GameObject blueBallFrags;
 
-    //array of objects for blue goal
-    public GameObject[] blueFragment;
-    public bool blueballExploding = false;
+//explosion animations in each goal
+    public GameObject explosionRed;
     public GameObject explosionBlue;
 
     //Claw Script Reference
     GameObject clawControl;
     ClawScript clawScript;
 
-    //reference to border scaling colours
-    public GameObject redCol;
-    public GameObject blueCol;
+
 
     //audio source
     AudioSource audioS;
@@ -52,57 +47,22 @@ public class GoalDetection : MonoBehaviour
         redScoreObject.SetActive(false);
         blueScoreObject.SetActive(false);
 
-        //assign objects with tag "ball" to the array
-       redfragmant = GameObject.FindGameObjectsWithTag("ball");
-        blueFragment = GameObject.FindGameObjectsWithTag("blueBall");
+
 
         //get references to claw script
         clawControl = GameObject.Find("Claw");
         clawScript = clawControl.GetComponent<ClawScript>();
 
-        //Debug.Log(fragmant.Length);
+        
+
     }
 
     void Update()
     {
 
-        if (ballExploding)
-        {
-            
-            //for each object in fragmant array            
-            
-            foreach (GameObject i in redfragmant)
-            {
-                //get the rigidbody component
-                //activate objects
-                i.SetActive(true);
-                
-                //choose a random direction for each piece to move in
-                Vector2 randomDir = new Vector2(Random.Range(1,100), Random.Range(1,100));
-                //add force, in the forward direction * 100 force
-                 i.GetComponent<Rigidbody2D>().AddForce(randomDir * 100);
+        
 
-                i.GetComponent<Rigidbody2D>().AddTorque(90);
 
-            }
-        }
-
-        if (blueballExploding)
-        {
-            //for each object in fragmant array            
-
-            foreach (GameObject i in blueFragment)
-            {
-                //get the rigidbody component
-                //activate objects
-                i.SetActive(true);
-                //choose a random direction for each piece to move in
-                Vector2 randomDir = new Vector2(Random.Range(1, 100), Random.Range(1, 100));
-                //add force, in the forward direction * 100 force
-                i.GetComponent<Rigidbody2D>().AddForce(randomDir * 100);
-                i.GetComponent<Rigidbody2D>().AddTorque(90);
-            }
-        }
         //if the score popup is active
         if (scoreActive)
         {         
@@ -110,6 +70,8 @@ public class GoalDetection : MonoBehaviour
             tempTimer -= Time.deltaTime;            
             if (tempTimer <= 0.0f)
             {
+                blueBallFrags.SetActive(false);
+                redballFrags.SetActive(false);
                 //if timer less than or equal to 0
                 //Set all gameobjects to inactive
                 redScoreObject.SetActive(false);
@@ -119,22 +81,11 @@ public class GoalDetection : MonoBehaviour
                 explosionBlue.SetActive(false);
                 explosionRed.SetActive(false);
 
-                blueballExploding = false;
-                ballExploding = false;
+
                 tempTimer = 1f;
             }
         }
-        //disable all ball fragmant objects
-        foreach (GameObject x in blueFragment)
-        {
-            x.SetActive(false);
-        }
 
-        ballExploding = false;
-        foreach (GameObject x in redfragmant)
-        {
-            x.SetActive(false);
-        }
     }
 
    
@@ -159,20 +110,24 @@ public class GoalDetection : MonoBehaviour
                 //blueCol.transform.localScale -= new Vector3(0.1f, 0, 0);
 
                 audioS.Play();
+                
 
                 redScoreObject.SetActive(true);
                 scoreActive = true;
                 
 
                 //set ball Exploding to be true
-                ballExploding = true;
-                explosionRed.SetActive(true);            
+                explosionRed.SetActive(true);
+
+                //get animationt component of ballFrags
+
 
                 //playing explosion animation
                 explosionRed.GetComponent<Animator>().SetTrigger("explode");
-                //set bool true to explode ball pieces
-                ballExploding = true;
-               
+
+                redballFrags.SetActive(true);
+                redballFrags.GetComponent<Animation>().Play("ball_parts_explode");
+
                 Debug.Log("Red Goal!");
             }
 
@@ -192,19 +147,23 @@ public class GoalDetection : MonoBehaviour
                 
                 blueScoreObject.SetActive(true);
                 scoreActive = true;
-                blueballExploding = true;
+              
                 explosionBlue.SetActive(true);
-                
+
+                //get animationt component of ballFrags
+
+
                 explosionBlue.GetComponent<Animator>().SetTrigger("explode");
                 Debug.Log("Blue Goal!");
 
-                //set bool true to explode ball pieces
-                blueballExploding = true;
+                 blueBallFrags.SetActive(true);
+                blueBallFrags.GetComponent<Animation>().Play("ball_parts_explode");
+               // blueBallFrags.PlayAnimation("ball_parts_explode")
                
             }
             
             GoalControllerScript.Reset();
-            
+
         }
         
     }
