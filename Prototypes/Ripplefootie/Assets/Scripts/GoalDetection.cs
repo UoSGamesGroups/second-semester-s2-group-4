@@ -103,7 +103,7 @@ public class GoalDetection : MonoBehaviour
             {
                 clawScript.dropClaw = true;
                 GoalControllerScript.redScore += 1;
-                GoalControllerScript.sliderScore -= 1 / 6;
+                GoalControllerScript.sliderScore += 1f / (GoalControllerScript.maxGoals * 2f);
                 GoalControllerScript.scoreChange = true; //(GoalControllerScript.maxGoals * 2)
 
                 //scale border colour
@@ -136,7 +136,7 @@ public class GoalDetection : MonoBehaviour
                 clawScript.dropClaw = true;
 
                 GoalControllerScript.blueScore += 1;
-                GoalControllerScript.sliderScore = GoalControllerScript.sliderScore - (1 / 6);
+                GoalControllerScript.sliderScore -= 1f / (GoalControllerScript.maxGoals * 2f);
                 GoalControllerScript.scoreChange = true;
 
                 //scale border colour

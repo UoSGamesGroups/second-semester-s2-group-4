@@ -13,6 +13,7 @@ public class GoalController : MonoBehaviour {
     public int blueScore = 0;
     //Holds the number of goals represented on the slider bar
     public float sliderScore;
+    public float supposedSliderscore;
 
 
     public GameObject ball;
@@ -25,7 +26,6 @@ public class GoalController : MonoBehaviour {
     public int timeTracker;
 
     public bool scoreChange = false;
-
 
     Vector3 ballOriginPos;
     Vector3 player1OriginPos;
@@ -64,8 +64,23 @@ public class GoalController : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
+        ////Smooth movement on the fill
+        //if (blueBar.fillAmount != supposedSliderscore)
+        //{
+        //    //If its closer to the blue side
+        //    if (blueBar.fillAmount < supposedSliderscore && blueBar.fillAmount < 0.5f)
+        //    {
+        //        blueBar.fillAmount += 0.01f;
+        //    }
+        //    //If its closer to the blue side
+        //    else if (blueBar.fillAmount > supposedSliderscore && blueBar.fillAmount > 0.5f)
+        //    {
+        //        blueBar.fillAmount -= 0.01f;
+        //    }
+        //}
 
         blueBar.fillAmount = sliderScore;
+
         if (scoreChange)
         {
             //Debug.Log("Resetting Ball");
@@ -126,7 +141,7 @@ public class GoalController : MonoBehaviour {
         //Red advantage
         if (sliderScore < 0.5)
         {
-            waveControllerScript.angleIncrement = sliderScore / 10;
+            waveControllerScript.angleIncrement = -(sliderScore / 100);
         }
 
     }
