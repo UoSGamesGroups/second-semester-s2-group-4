@@ -15,6 +15,7 @@ public class GoalController : MonoBehaviour {
     public float sliderScore;
     public float supposedSliderscore;
 
+    public int waveSpeed;
 
     public GameObject ball;
     public GameObject player1;
@@ -28,8 +29,6 @@ public class GoalController : MonoBehaviour {
     public bool scoreChange = false;
 
     Vector3 ballOriginPos;
-    Vector3 player1OriginPos;
-    Vector3 player2OriginPos;
 
     GameObject waveController;
     TestRipple2 waveControllerScript;
@@ -46,8 +45,6 @@ public class GoalController : MonoBehaviour {
     {
         //sets the original vector points, happens at the beginning of the game (you can move the ball and players around to whereever and they will just teleport back there)
         ballOriginPos = ball.transform.position;
-        player1OriginPos = player1.transform.position;
-        player2OriginPos = player2.transform.position;
 
         //Starts the timer Coroutine
         StartCoroutine(Timer());
@@ -58,7 +55,16 @@ public class GoalController : MonoBehaviour {
         mainMenu = GameObject.Find("MenuObject");
         menuScript = mainMenu.GetComponent<MainMenu>();
 
-
+        int beginning = Random.Range(0, 2);
+        if (beginning == 1)
+        {
+            waveSpeed = 1;
+        }
+        else
+        {
+            waveSpeed = -1;
+        }
+        changeWave();
     }
 	
 	// Update is called once per frame
@@ -121,44 +127,19 @@ public class GoalController : MonoBehaviour {
         Debug.Log("Resetting Ball");
         ball.transform.position = ballOriginPos;
         ball.GetComponent<Rigidbody2D>().velocity = new Vector2(0.0f, 0.0f);  
-
-
-
     }
 
     void changeWave()
     {
-
-        if(sliderScore == 0.5)
-        {
-            waveControllerScript.angleIncrement = 0.0f;
-        }
         //Blue Advantage
-        if (sliderScore > 0.5)
+        if (waveSpeed > 0)
         {
-            waveControllerScript.angleIncrement = sliderScore / 100;
+            waveControllerScript.angleIncrement = waveSpeed / 100f;
         }
         //Red advantage
-        if (sliderScore < 0.5)
+        if (waveSpeed < 0)
         {
-            waveControllerScript.angleIncrement = -(sliderScore / 100);
-        }
-
-    }
-    //Sets outofbounds objects back to their origin points
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.name == "Player1")
-        {
-            player1.transform.position = player1OriginPos;
-        }
-        if (other.name == "Player2")
-        {
-            player2.transform.position = player2OriginPos;
-        }
-        if (other.name == "Ball")
-        {
-            ball.transform.position = ballOriginPos;
+            waveControllerScript.angleIncrement = waveSpeed / 100f;
         }
 
     }

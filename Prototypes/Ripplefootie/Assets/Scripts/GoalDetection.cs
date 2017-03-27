@@ -88,10 +88,7 @@ public class GoalDetection : MonoBehaviour
 
     }
 
-   
-
-
-
+  
     //Detect when a ball enters the goal
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -103,6 +100,7 @@ public class GoalDetection : MonoBehaviour
             {
                 clawScript.dropClaw = true;
                 GoalControllerScript.redScore += 1;
+                GoalControllerScript.waveSpeed -= 1;
                 GoalControllerScript.sliderScore += 1f / (GoalControllerScript.maxGoals * 2f);
                 GoalControllerScript.scoreChange = true; //(GoalControllerScript.maxGoals * 2)
 
@@ -136,6 +134,7 @@ public class GoalDetection : MonoBehaviour
                 clawScript.dropClaw = true;
 
                 GoalControllerScript.blueScore += 1;
+                GoalControllerScript.waveSpeed += 1;
                 GoalControllerScript.sliderScore -= 1f / (GoalControllerScript.maxGoals * 2f);
                 GoalControllerScript.scoreChange = true;
 
