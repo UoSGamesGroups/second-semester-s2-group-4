@@ -65,7 +65,8 @@ public class GoalDetection : MonoBehaviour
 
         //if the score popup is active
         if (scoreActive)
-        {         
+        {
+
             //use a timer
             tempTimer -= Time.deltaTime;            
             if (tempTimer <= 0.0f)

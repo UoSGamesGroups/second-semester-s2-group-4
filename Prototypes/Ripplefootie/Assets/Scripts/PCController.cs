@@ -24,11 +24,15 @@ public class PCController : MonoBehaviour
     //audio source
     AudioSource audioS;
 
+    public GameObject playerKickAnim;
+
     // Use this for initialization
     void Start()
     {
         RigidB = GetComponent<Rigidbody2D>();
         audioS = GetComponent<AudioSource>();
+        
+       
     }
 
     // Update is called once per frame
@@ -39,12 +43,16 @@ public class PCController : MonoBehaviour
         if (Input.GetKey(kcRight))
         {
             RigidB.AddForce(new Vector2(moveSpeed, 0), ForceMode2D.Force);
+            
+            
 
         }
         //Move Left
         if (Input.GetKey(kcLeft))
         {
             RigidB.AddForce(new Vector2(-moveSpeed, 0), ForceMode2D.Force);
+            
+            
         }
         //Jump
         if (Input.GetKey(kcUp) && isGrounded == true)
@@ -60,7 +68,7 @@ public class PCController : MonoBehaviour
         {
             RigidB.AddForce(new Vector2(0, -jumpSpeed/2));
         }
-
+        
     }
 
     void OnCollisionStay2D(Collision2D Collider)
@@ -85,12 +93,18 @@ public class PCController : MonoBehaviour
         //Kick
         if (Input.GetKeyDown(kcKick) && Collider.gameObject.tag == "Ball")
         {
+            
+
+            playerKickAnim.GetComponent<Animator>().SetTrigger("isKicking");
+
             Rigidbody2D BallRB = Collider.gameObject.GetComponent<Rigidbody2D>();
             Vector2 BallForce = Collider.gameObject.transform.position - this.transform.position;// ball -player
             float Magnitude = Mathf.Sqrt(Mathf.Pow(BallForce.x, 2) + Mathf.Pow(BallForce.y, 2));
 
 
             BallRB.AddForce(new Vector2(KickSpeed * BallForce.x / Magnitude, KickSpeed * BallForce.y / Magnitude));
+
+            
         }
     }
 }
