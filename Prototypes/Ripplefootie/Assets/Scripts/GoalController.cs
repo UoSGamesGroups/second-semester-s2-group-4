@@ -17,9 +17,7 @@ public class GoalController : MonoBehaviour {
 
     public int waveSpeed;
 
-    public GameObject ball;
-    public GameObject player1;
-    public GameObject player2;
+    public GameObject ball, player1, player2;
 
     public Image blueBar;//The blue part of the background
     public int maxGoals; // The number of goals needed to win
@@ -64,7 +62,12 @@ public class GoalController : MonoBehaviour {
         {
             waveSpeed = -1;
         }
-        changeWave();
+        scoreChange = true;
+    }
+
+    void Awake()
+    {
+
     }
 	
 	// Update is called once per frame
