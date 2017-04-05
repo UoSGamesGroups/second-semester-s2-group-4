@@ -52,17 +52,6 @@ public class GoalController : MonoBehaviour {
 
         mainMenu = GameObject.Find("MenuObject");
         menuScript = mainMenu.GetComponent<MainMenu>();
-
-        int beginning = Random.Range(0, 2);
-        if (beginning == 1)
-        {
-            waveSpeed = 1;
-        }
-        else
-        {
-            waveSpeed = -1;
-        }
-        scoreChange = true;
     }
 
     void Awake()
@@ -87,6 +76,19 @@ public class GoalController : MonoBehaviour {
         //        blueBar.fillAmount -= 0.01f;
         //    }
         //}
+
+        if (waveSpeed == 0)
+        {
+            int beginning = Random.Range(0, 2);
+            if (beginning == 1)
+                waveSpeed = 1;
+            else
+                waveSpeed = -1;
+            scoreChange = true;
+        }
+
+
+
 
         blueBar.fillAmount = sliderScore;
 
