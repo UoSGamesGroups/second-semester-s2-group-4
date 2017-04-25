@@ -1,0 +1,590 @@
+fileFormatVersion: 2
+guid: 8a46d454f03c78045838ac04a08efd1e
+timeCreated: 1493144464
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: purple_player_spritesheet_L_0
+    21300002: purple_player_spritesheet_L_1
+    21300004: purple_player_spritesheet_L_2
+    21300006: purple_player_spritesheet_L_3
+    21300008: purple_player_spritesheet_L_4
+    21300010: purple_player_spritesheet_L_5
+    21300012: purple_player_spritesheet_L_6
+    21300014: purple_player_spritesheet_L_7
+    21300016: purple_player_spritesheet_L_8
+    21300018: purple_player_spritesheet_L_9
+    21300020: purple_player_spritesheet_L_10
+    21300022: purple_player_spritesheet_L_11
+    21300024: purple_player_spritesheet_L_12
+    21300026: purple_player_spritesheet_L_13
+    21300028: purple_player_spritesheet_L_14
+    21300030: purple_player_spritesheet_L_15
+    21300032: purple_player_spritesheet_L_16
+    21300034: purple_player_spritesheet_L_17
+    21300036: purple_player_spritesheet_L_18
+    21300038: purple_player_spritesheet_L_19
+    21300040: purple_player_spritesheet_L_20
+    21300042: purple_player_spritesheet_L_21
+    21300044: purple_player_spritesheet_L_22
+    21300046: purple_player_spritesheet_L_23
+    21300048: purple_player_spritesheet_L_24
+    21300050: purple_player_spritesheet_L_25
+    21300052: purple_player_spritesheet_L_26
+    21300054: purple_player_spritesheet_L_27
+    21300056: purple_player_spritesheet_L_28
+    21300058: purple_player_spritesheet_L_29
+    21300060: purple_player_spritesheet_L_30
+    21300062: purple_player_spritesheet_L_31
+    21300064: purple_player_spritesheet_L_32
+    21300066: purple_player_spritesheet_L_33
+    21300068: purple_player_spritesheet_L_34
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 12
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: iPhone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Android
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Samsung TV
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: purple_player_spritesheet_L_0
+      rect:
+        serializedVersion: 2
+        x: 524
+        y: 762
+        width: 121
+        height: 253
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: purple_player_spritesheet_L_1
+      rect:
+        serializedVersion: 2
+        x: 663
+        y: 762
+        width: 117
+        height: 254
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: purple_player_spritesheet_L_2
+      rect:
+        serializedVersion: 2
+        x: 799
+        y: 798
+        width: 160
+        height: 202
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: purple_player_spritesheet_L_3
+      rect:
+        serializedVersion: 2
+        x: 959
+        y: 788
+        width: 142
+        height: 228
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: purple_player_spritesheet_L_4
+      rect:
+        serializedVersion: 2
+        x: 1113
+        y: 801
+        width: 122
+        height: 204
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: purple_player_spritesheet_L_5
+      rect:
+        serializedVersion: 2
+        x: 1253
+        y: 831
+        width: 144
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: purple_player_spritesheet_L_6
+      rect:
+        serializedVersion: 2
+        x: 1401
+        y: 799
+        width: 158
+        height: 223
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: purple_player_spritesheet_L_7
+      rect:
+        serializedVersion: 2
+        x: 1566
+        y: 769
+        width: 121
+        height: 253
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: purple_player_spritesheet_L_8
+      rect:
+        serializedVersion: 2
+        x: 1705
+        y: 769
+        width: 117
+        height: 254
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: purple_player_spritesheet_L_9
+      rect:
+        serializedVersion: 2
+        x: 977
+        y: 519
+        width: 144
+        height: 254
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: purple_player_spritesheet_L_10
+      rect:
+        serializedVersion: 2
+        x: 1140
+        y: 534
+        width: 118
+        height: 254
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: purple_player_spritesheet_L_11
+      rect:
+        serializedVersion: 2
+        x: 1289
+        y: 549
+        width: 118
+        height: 254
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: purple_player_spritesheet_L_12
+      rect:
+        serializedVersion: 2
+        x: 1438
+        y: 534
+        width: 144
+        height: 254
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: purple_player_spritesheet_L_13
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 258
+        width: 117
+        height: 254
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: purple_player_spritesheet_L_14
+      rect:
+        serializedVersion: 2
+        x: 583
+        y: 259
+        width: 121
+        height: 253
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: purple_player_spritesheet_L_15
+      rect:
+        serializedVersion: 2
+        x: 749
+        y: 251
+        width: 121
+        height: 253
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: purple_player_spritesheet_L_16
+      rect:
+        serializedVersion: 2
+        x: 877
+        y: 269
+        width: 131
+        height: 224
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: purple_player_spritesheet_L_17
+      rect:
+        serializedVersion: 2
+        x: 1047
+        y: 277
+        width: 133
+        height: 203
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: purple_player_spritesheet_L_18
+      rect:
+        serializedVersion: 2
+        x: 1206
+        y: 277
+        width: 133
+        height: 203
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: purple_player_spritesheet_L_19
+      rect:
+        serializedVersion: 2
+        x: 1340
+        y: 267
+        width: 131
+        height: 224
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: purple_player_spritesheet_L_20
+      rect:
+        serializedVersion: 2
+        x: 1470
+        y: 266
+        width: 121
+        height: 253
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: purple_player_spritesheet_L_21
+      rect:
+        serializedVersion: 2
+        x: 1585
+        y: 266
+        width: 121
+        height: 253
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: purple_player_spritesheet_L_22
+      rect:
+        serializedVersion: 2
+        x: 1705
+        y: 265
+        width: 117
+        height: 254
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: purple_player_spritesheet_L_23
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 5
+        width: 117
+        height: 254
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: purple_player_spritesheet_L_24
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 4
+        width: 117
+        height: 254
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: purple_player_spritesheet_L_25
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 0
+        width: 117
+        height: 254
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: purple_player_spritesheet_L_26
+      rect:
+        serializedVersion: 2
+        x: 383
+        y: 0
+        width: 139
+        height: 254
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: purple_player_spritesheet_L_27
+      rect:
+        serializedVersion: 2
+        x: 529
+        y: 0
+        width: 165
+        height: 254
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: purple_player_spritesheet_L_28
+      rect:
+        serializedVersion: 2
+        x: 715
+        y: 0
+        width: 188
+        height: 251
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: purple_player_spritesheet_L_29
+      rect:
+        serializedVersion: 2
+        x: 913
+        y: 0
+        width: 188
+        height: 254
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: purple_player_spritesheet_L_30
+      rect:
+        serializedVersion: 2
+        x: 1101
+        y: 0
+        width: 165
+        height: 254
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: purple_player_spritesheet_L_31
+      rect:
+        serializedVersion: 2
+        x: 1266
+        y: 4
+        width: 139
+        height: 254
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: purple_player_spritesheet_L_32
+      rect:
+        serializedVersion: 2
+        x: 1413
+        y: 5
+        width: 117
+        height: 254
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: purple_player_spritesheet_L_33
+      rect:
+        serializedVersion: 2
+        x: 1548
+        y: 4
+        width: 117
+        height: 254
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: purple_player_spritesheet_L_34
+      rect:
+        serializedVersion: 2
+        x: 1686
+        y: 5
+        width: 117
+        height: 254
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

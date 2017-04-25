@@ -21,6 +21,9 @@ public class PCController : MonoBehaviour
     public bool isGrounded = false;
     private Rigidbody2D RigidB;
 
+    //reference to animator 
+    public Animator anim;
+
     //audio source
     AudioSource audioS;
 
@@ -31,7 +34,9 @@ public class PCController : MonoBehaviour
     {
         RigidB = GetComponent<Rigidbody2D>();
         audioS = GetComponent<AudioSource>();
-        
+
+        //get reference for animator
+        anim = GetComponent<Animator>();
        
     }
 
@@ -39,11 +44,16 @@ public class PCController : MonoBehaviour
     void FixedUpdate()
     {
         float unmodifiedMoveSpeed = moveSpeed;
+
+        float moveDirection = Input.GetAxis("Horizontal");
+        anim.SetFloat("speed", Mathf.Abs(moveDirection));
+
         //Move Right
         if (Input.GetKey(kcRight))
         {
             RigidB.AddForce(new Vector2(moveSpeed, 0), ForceMode2D.Force);
-            
+
+
             
 
         }
@@ -51,17 +61,22 @@ public class PCController : MonoBehaviour
         if (Input.GetKey(kcLeft))
         {
             RigidB.AddForce(new Vector2(-moveSpeed, 0), ForceMode2D.Force);
-            
-            
+
+
+
         }
         //Jump
         if (Input.GetKey(kcUp) && isGrounded == true)
         {
+            //setting trigger animation for "jump"
+            anim.SetTrigger("isJumping");
             isGrounded = false;
             //Debug.Log("Should be jumping");
             RigidB.AddForce(new Vector2(0, jumpSpeed)/*, ForceMode2D.Impulse*/);
             //GetComponent<Rigidbody2D>().AddForce(Vector2.up * jumpSpeed, ForceMode2D.Impulse);
             audioS.Play();
+
+
         }
         //force downward
         if (Input.GetKeyDown(kcDown)&&isGrounded == false)

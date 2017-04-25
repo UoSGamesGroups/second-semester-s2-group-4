@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Seahorsing around.unity
+- path: Assets/Scenes/test_scene_goal.unity
   isLoaded: 1
   isActive: 1
