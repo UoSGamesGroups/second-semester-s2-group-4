@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/test_scene_goal.unity
+- path: Assets/Scenes/RippleFootie.unity
   isLoaded: 1
   isActive: 1
