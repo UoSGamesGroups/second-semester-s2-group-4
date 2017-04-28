@@ -13,22 +13,14 @@ public class GoalDetection : MonoBehaviour
 
     //variables for visual indicator
     //that a goal is scored
-
-    public GameObject redScoreObject;
-    public GameObject blueScoreObject;
+    public GameObject redScoreObject, blueScoreObject;
     private bool scoreActive = false;
 
     //Ball fragments (for ball explosion when a goal is scored)
-    public GameObject redballFrags;
-    public GameObject blueBallFrags;
+    public GameObject redballFrags, blueBallFrags;
 
 //explosion animations in each goal
-    public GameObject explosionRed;
-    public GameObject explosionBlue;
-
-    //Claw Script Reference
-    GameObject clawControl;
-    ClawScript clawScript;
+    public GameObject explosionRed, explosionBlue;
 
 
 
@@ -42,31 +34,16 @@ public class GoalDetection : MonoBehaviour
 
         audioS = GetComponent<AudioSource>();
 
-
         //Set all gameobjects to inactive
         redScoreObject.SetActive(false);
         blueScoreObject.SetActive(false);
-
-
-
-        //get references to claw script
-        clawControl = GameObject.Find("Claw");
-        clawScript = clawControl.GetComponent<ClawScript>();
-
-        
-
     }
 
     void Update()
     {
-
-        
-
-
         //if the score popup is active
         if (scoreActive)
         {
-
             //use a timer
             tempTimer -= Time.deltaTime;            
             if (tempTimer <= 0.0f)
@@ -99,22 +76,17 @@ public class GoalDetection : MonoBehaviour
             //Decision on which goal to add points to
             if (isRedGoal)
             {
-                clawScript.dropClaw = true;
                 GoalControllerScript.redScore += 1;
                 GoalControllerScript.waveSpeed -= 1;
-                GoalControllerScript.sliderScore += 1f / (GoalControllerScript.maxGoals * 2f);
                 GoalControllerScript.scoreChange = true; //(GoalControllerScript.maxGoals * 2)
 
                 //scale border colour
                 //blueCol.transform.localScale -= new Vector3(0.1f, 0, 0);
-
                 audioS.Play();
                 
-
                 redScoreObject.SetActive(true);
                 scoreActive = true;
                 
-
                 //set ball Exploding to be true
                 explosionRed.SetActive(true);
 
@@ -132,11 +104,9 @@ public class GoalDetection : MonoBehaviour
 
             if (!isRedGoal)
             {
-                clawScript.dropClaw = true;
 
                 GoalControllerScript.blueScore += 1;
                 GoalControllerScript.waveSpeed += 1;
-                GoalControllerScript.sliderScore -= 1f / (GoalControllerScript.maxGoals * 2f);
                 GoalControllerScript.scoreChange = true;
 
                 //scale border colour
@@ -162,7 +132,7 @@ public class GoalDetection : MonoBehaviour
                
             }
             
-            GoalControllerScript.Reset();
+            //GoalControllerScript.Reset();
 
         }
         

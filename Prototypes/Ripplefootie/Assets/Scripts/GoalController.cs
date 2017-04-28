@@ -11,16 +11,11 @@ public class GoalController : MonoBehaviour {
     public int redScore = 0;
     //Holds the number of goals the blue player has
     public int blueScore = 0;
-    //Holds the number of goals represented on the slider bar
-    public float sliderScore;
-    public float supposedSliderscore;
 
     public int waveSpeed;
 
     public GameObject ball, player1, player2;
-
-    public Image blueBar;//The blue part of the background
-    public int maxGoals; // The number of goals needed to win
+    public int maxGoals = 4; // The number of goals needed to win
 
     public int timeTracker;
 
@@ -30,6 +25,10 @@ public class GoalController : MonoBehaviour {
 
     GameObject waveController;
     TestRipple2 waveControllerScript;
+
+    //Declare all ball objects
+    public GameObject redBall1, redBall2, redBall3, redBall4;
+    public GameObject blueBall1, blueBall2, blueBall3, blueBall4;
 
     //reference to main menu script
     //to affect shown image on Game Over screen.
@@ -62,20 +61,6 @@ public class GoalController : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        ////Smooth movement on the fill
-        //if (blueBar.fillAmount != supposedSliderscore)
-        //{
-        //    //If its closer to the blue side
-        //    if (blueBar.fillAmount < supposedSliderscore && blueBar.fillAmount < 0.5f)
-        //    {
-        //        blueBar.fillAmount += 0.01f;
-        //    }
-        //    //If its closer to the blue side
-        //    else if (blueBar.fillAmount > supposedSliderscore && blueBar.fillAmount > 0.5f)
-        //    {
-        //        blueBar.fillAmount -= 0.01f;
-        //    }
-        //}
 
         if (waveSpeed == 0)
         {
@@ -87,11 +72,6 @@ public class GoalController : MonoBehaviour {
             scoreChange = true;
         }
 
-
-
-
-        blueBar.fillAmount = sliderScore;
-
         if (scoreChange)
         {
             //Debug.Log("Resetting Ball");
@@ -100,31 +80,9 @@ public class GoalController : MonoBehaviour {
             changeWave();
             //Debug.Log("Wave Changed");
             scoreChange = false;
+            //Run score changer
+            GoalChange();
         }
-
-        if (blueBar.fillAmount <= 0)
-        {
-            Debug.Log("Blue Wins");
-            menuScript.redWon = true;                    
-            menuScript.LoadByIndex(2);
-           
-            
-        }
-
-        if (blueBar.fillAmount >= 1)
-        {
-            Debug.Log("Red Wins");
-            menuScript.blueWon = true;         
-            menuScript.LoadByIndex(3);
-
-        }
-
-        //if (Input.GetButtonDown("Jump"))
-        //{
-        //    scoreChange = true;
-        //    redScore += 1;
-        //}
-
 	}
 
     void resetBall()
@@ -138,20 +96,10 @@ public class GoalController : MonoBehaviour {
     {
         //Blue Advantage
         if (waveSpeed > 0)
-        {
             waveControllerScript.angleIncrement = waveSpeed / 100f;
-        }
         //Red advantage
         if (waveSpeed < 0)
-        {
             waveControllerScript.angleIncrement = waveSpeed / 100f;
-        }
-
-    }
-
-    public void Reset()
-    {
-       
     }
 
     IEnumerator Timer()
@@ -162,5 +110,27 @@ public class GoalController : MonoBehaviour {
             timeTracker++;
         }
 
+    }
+
+    void GoalChange()
+    {
+
+        if (blueScore == 1)
+            redBall1.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
+        if (blueScore == 2)
+            redBall2.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
+        if (blueScore == 3)
+            redBall3.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
+        if (blueScore == 4)
+            redBall4.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
+
+        if (redScore == 1)
+            blueBall1.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
+        if (redScore == 2)
+            blueBall2.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
+        if (redScore == 3)
+            blueBall3.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
+        if (redScore == 4)
+            blueBall4.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
     }
 }

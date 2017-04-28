@@ -53,9 +53,6 @@ public class PCController : MonoBehaviour
         {
             RigidB.AddForce(new Vector2(moveSpeed, 0), ForceMode2D.Force);
 
-
-            
-
         }
         //Move Left
         if (Input.GetKey(kcLeft))
