@@ -29,6 +29,8 @@ public class PCController : MonoBehaviour
 
     public GameObject playerKickAnim;
 
+    private SpriteRenderer mySpriteRender;
+
     // Use this for initialization
     void Start()
     {
@@ -37,36 +39,39 @@ public class PCController : MonoBehaviour
 
         //get reference for animator
         anim = GetComponent<Animator>();
-       
+        mySpriteRender = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
         float unmodifiedMoveSpeed = moveSpeed;
-
-        float moveDirection = Input.GetAxis("Horizontal");
-        anim.SetFloat("speed", Mathf.Abs(moveDirection));
+        anim.SetInteger("state", 0);
+        //  float moveDirection = Input.GetAxis("Horizontal");
+        //
+        // anim.SetFloat("speed", moveDirection);
 
         //Move Right
         if (Input.GetKey(kcRight))
         {
             RigidB.AddForce(new Vector2(moveSpeed, 0), ForceMode2D.Force);
+            anim.SetInteger("state", 2);
 
         }
         //Move Left
         if (Input.GetKey(kcLeft))
         {
             RigidB.AddForce(new Vector2(-moveSpeed, 0), ForceMode2D.Force);
-
+            mySpriteRender.flipX = true;
+            anim.SetInteger("state", 1);
 
 
         }
         //Jump
         if (Input.GetKey(kcUp) && isGrounded == true)
         {
-            //setting trigger animation for "jump"
-            anim.SetTrigger("isJumping");
+            
+            
             isGrounded = false;
             //Debug.Log("Should be jumping");
             RigidB.AddForce(new Vector2(0, jumpSpeed)/*, ForceMode2D.Impulse*/);

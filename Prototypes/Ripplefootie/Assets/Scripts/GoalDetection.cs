@@ -27,8 +27,14 @@ public class GoalDetection : MonoBehaviour
     //audio source
     AudioSource audioS;
 
+    //camera shake script
+
+    CameraShakeScript camShake;
+
     void Start()
     {
+        
+
         GoalControl = GameObject.Find("Arena");
         GoalControllerScript = GoalControl.GetComponent<GoalController>();
 
@@ -73,9 +79,12 @@ public class GoalDetection : MonoBehaviour
         if (other.gameObject.tag == "Ball")
         {
             
+            
             //Decision on which goal to add points to
             if (isRedGoal)
             {
+
+                
                 GoalControllerScript.redScore += 1;
                 GoalControllerScript.waveSpeed -= 1;
                 GoalControllerScript.scoreChange = true; //(GoalControllerScript.maxGoals * 2)
@@ -92,6 +101,9 @@ public class GoalDetection : MonoBehaviour
 
                 //get animationt component of ballFrags
 
+                //cam shake
+                camShake.ShakeCam();
+
 
                 //playing explosion animation
                 explosionRed.GetComponent<Animator>().SetTrigger("explode");
@@ -100,11 +112,13 @@ public class GoalDetection : MonoBehaviour
                 redballFrags.GetComponent<Animation>().Play("ball_parts_explode");
 
                 Debug.Log("Red Goal!");
+                
             }
 
             if (!isRedGoal)
             {
 
+               
                 GoalControllerScript.blueScore += 1;
                 GoalControllerScript.waveSpeed += 1;
                 GoalControllerScript.scoreChange = true;
@@ -126,10 +140,15 @@ public class GoalDetection : MonoBehaviour
                 explosionBlue.GetComponent<Animator>().SetTrigger("explode");
                 Debug.Log("Blue Goal!");
 
-                 blueBallFrags.SetActive(true);
+                //cam shake
+                camShake.ShakeCam();
+
+
+                blueBallFrags.SetActive(true);
                 blueBallFrags.GetComponent<Animation>().Play("ball_parts_explode");
-               // blueBallFrags.PlayAnimation("ball_parts_explode")
-               
+                // blueBallFrags.PlayAnimation("ball_parts_explode")
+                
+
             }
             
             //GoalControllerScript.Reset();

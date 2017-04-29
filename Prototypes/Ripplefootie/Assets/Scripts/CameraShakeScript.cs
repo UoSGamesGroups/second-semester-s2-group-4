@@ -35,14 +35,14 @@ public class CameraShakeScript : MonoBehaviour {
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.B))
         {
             ShakeCam();
         }
 		
 	}
 
-    void ShakeCam()
+   public void ShakeCam()
     {
         originPos = transform.position;
         originRot = transform.rotation;
