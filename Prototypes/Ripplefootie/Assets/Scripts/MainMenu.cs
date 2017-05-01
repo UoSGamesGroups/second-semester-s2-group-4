@@ -16,6 +16,8 @@ public class MainMenu : MonoBehaviour {
     public GameObject controlsButton;
     public GameObject exitButton;
 
+    public GameObject titlePanel;
+
     //references for game over screen
     public GameObject blueWin;
     public GameObject redWin;
@@ -42,6 +44,7 @@ public class MainMenu : MonoBehaviour {
         startButton.SetActive(false);
         controlsButton.SetActive(false);
         exitButton.SetActive(false);
+        titlePanel.SetActive(false);
     }
 
     //called when "back button" is pressed
@@ -57,6 +60,7 @@ public class MainMenu : MonoBehaviour {
         startButton.SetActive(true);
         controlsButton.SetActive(true);
         exitButton.SetActive(true);
+        titlePanel.SetActive(true);
     }
 
     public void  RedWinScreen()

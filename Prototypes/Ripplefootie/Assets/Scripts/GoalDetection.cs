@@ -29,7 +29,7 @@ public class GoalDetection : MonoBehaviour
 
     //camera shake script
 
-    CameraShakeScript camShake;
+    public CameraShakeScript camShake;
 
     void Start()
     {
@@ -78,13 +78,26 @@ public class GoalDetection : MonoBehaviour
     {
         if (other.gameObject.tag == "Ball")
         {
-            
-            
+
+
             //Decision on which goal to add points to
             if (isRedGoal)
             {
+                camShake.ShakeCam();
 
-                
+                redScoreObject.SetActive(true);
+                scoreActive = true;
+
+                //set ball Exploding to be true
+                explosionRed.SetActive(true);
+
+                //get animationt component of ballFrags
+                //playing explosion animation
+                explosionRed.GetComponent<Animator>().SetTrigger("explode");
+
+                redballFrags.SetActive(true);
+                redballFrags.GetComponent<Animation>().Play("ball_parts_explode");
+
                 GoalControllerScript.redScore += 1;
                 GoalControllerScript.waveSpeed -= 1;
                 GoalControllerScript.scoreChange = true; //(GoalControllerScript.maxGoals * 2)
@@ -92,24 +105,13 @@ public class GoalDetection : MonoBehaviour
                 //scale border colour
                 //blueCol.transform.localScale -= new Vector3(0.1f, 0, 0);
                 audioS.Play();
-                
-                redScoreObject.SetActive(true);
-                scoreActive = true;
-                
-                //set ball Exploding to be true
-                explosionRed.SetActive(true);
 
-                //get animationt component of ballFrags
 
                 //cam shake
                 camShake.ShakeCam();
 
 
-                //playing explosion animation
-                explosionRed.GetComponent<Animator>().SetTrigger("explode");
 
-                redballFrags.SetActive(true);
-                redballFrags.GetComponent<Animation>().Play("ball_parts_explode");
 
                 Debug.Log("Red Goal!");
                 
@@ -117,8 +119,31 @@ public class GoalDetection : MonoBehaviour
 
             if (!isRedGoal)
             {
+                camShake.ShakeCam();
 
-               
+                //get animationt component of ballFrags
+
+
+                audioS.Play();
+
+
+                blueScoreObject.SetActive(true);
+                scoreActive = true;
+
+                explosionBlue.SetActive(true);
+
+                explosionBlue.GetComponent<Animator>().SetTrigger("explode");
+                Debug.Log("Blue Goal!");
+
+
+
+
+                blueBallFrags.SetActive(true);
+                blueBallFrags.GetComponent<Animation>().Play("ball_parts_explode");
+                // blueBallFrags.PlayAnimation("ball_parts_explode")
+
+
+
                 GoalControllerScript.blueScore += 1;
                 GoalControllerScript.waveSpeed += 1;
                 GoalControllerScript.scoreChange = true;
@@ -126,31 +151,11 @@ public class GoalDetection : MonoBehaviour
                 //scale border colour
                 //blueCol.transform.localScale += new Vector3(0.1f, 0, 0);
 
-                audioS.Play();
-
-                
-                blueScoreObject.SetActive(true);
-                scoreActive = true;
-              
-                explosionBlue.SetActive(true);
-
-                //get animationt component of ballFrags
-
-
-                explosionBlue.GetComponent<Animator>().SetTrigger("explode");
-                Debug.Log("Blue Goal!");
-
                 //cam shake
-                camShake.ShakeCam();
 
-
-                blueBallFrags.SetActive(true);
-                blueBallFrags.GetComponent<Animation>().Play("ball_parts_explode");
-                // blueBallFrags.PlayAnimation("ball_parts_explode")
-                
 
             }
-            
+
             //GoalControllerScript.Reset();
 
         }
