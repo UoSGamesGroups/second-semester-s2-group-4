@@ -29,6 +29,8 @@ public class GoalController : MonoBehaviour {
     //Declare all ball objects
     public GameObject redBall1, redBall2, redBall3, redBall4;
     public GameObject blueBall1, blueBall2, blueBall3, blueBall4;
+    //public GameObject redTextObj, blueTextObj;
+    public Text redText, blueText;
 
     //reference to main menu script
     //to affect shown image on Game Over screen.
@@ -51,6 +53,9 @@ public class GoalController : MonoBehaviour {
 
         mainMenu = GameObject.Find("MenuObject");
         menuScript = mainMenu.GetComponent<MainMenu>();
+
+        //redText = redTextObj.GetComponent <Text>();
+        
     }
 
     void Awake()
@@ -61,7 +66,7 @@ public class GoalController : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-
+        
         if (waveSpeed == 0)
         {
             int beginning = Random.Range(0, 2);
@@ -114,23 +119,40 @@ public class GoalController : MonoBehaviour {
 
     void GoalChange()
     {
+        redText.text = blueScore.ToString();
+        blueText.text = redScore.ToString();
+        if (redScore == 1)
+        {
+            redBall1.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
+        }
+        if (redScore == 2)
+        {
+            redBall2.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
+        }
+        if (redScore == 3)
+        {
+            redBall3.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
+        }
+        if (redScore == 4)
+        {
+            redBall4.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
+        }
 
         if (blueScore == 1)
-            redBall1.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
-        if (blueScore == 2)
-            redBall2.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
-        if (blueScore == 3)
-            redBall3.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
-        if (blueScore == 4)
-            redBall4.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
-
-        if (redScore == 1)
+        {
             blueBall1.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
-        if (redScore == 2)
+        }
+        if (blueScore == 2)
+        {
             blueBall2.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
-        if (redScore == 3)
+        }
+        if (blueScore == 3)
+        {
             blueBall3.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
-        if (redScore == 4)
+        }
+        if (blueScore == 4)
+        {
             blueBall4.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
+        }
     }
 }
