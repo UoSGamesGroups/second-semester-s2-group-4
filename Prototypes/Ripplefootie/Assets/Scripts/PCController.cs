@@ -40,6 +40,7 @@ public class PCController : MonoBehaviour
         //get reference for animator
         anim = GetComponent<Animator>();
         mySpriteRender = GetComponent<SpriteRenderer>();
+      
     }
 
     // Update is called once per frame
@@ -54,19 +55,24 @@ public class PCController : MonoBehaviour
         //Move Right
         if (Input.GetKey(kcRight))
         {
+            mySpriteRender.flipX = false;
             RigidB.AddForce(new Vector2(moveSpeed, 0), ForceMode2D.Force);
-            anim.SetInteger("state", 2);
+            
+            anim.SetInteger("state", 1);
 
         }
+
         //Move Left
         if (Input.GetKey(kcLeft))
         {
-            RigidB.AddForce(new Vector2(-moveSpeed, 0), ForceMode2D.Force);
             mySpriteRender.flipX = true;
+            RigidB.AddForce(new Vector2(-moveSpeed, 0), ForceMode2D.Force);
+            
             anim.SetInteger("state", 1);
 
 
         }
+
         //Jump
         if (Input.GetKey(kcUp) && isGrounded == true)
         {
@@ -77,15 +83,16 @@ public class PCController : MonoBehaviour
             RigidB.AddForce(new Vector2(0, jumpSpeed)/*, ForceMode2D.Impulse*/);
             //GetComponent<Rigidbody2D>().AddForce(Vector2.up * jumpSpeed, ForceMode2D.Impulse);
             audioS.Play();
-
-
         }
+
         //force downward
         if (Input.GetKeyDown(kcDown)&&isGrounded == false)
         {
             RigidB.AddForce(new Vector2(0, -jumpSpeed/2));
         }
+
         
+
     }
 
     void OnCollisionStay2D(Collision2D Collider)
@@ -110,17 +117,18 @@ public class PCController : MonoBehaviour
         //Kick
         if (Input.GetKeyDown(kcKick) && Collider.gameObject.tag == "Ball")
         {
-            
 
-            playerKickAnim.GetComponent<Animator>().SetTrigger("isKicking");
+            //the kick animation doesnt work.
+            //i have no idea why, but i'm definitely missing something incrediably obvious. -Heather :)
+            //playerKickAnim.GetComponent<Animator>().SetTrigger("isKicking");
+            playerKickAnim.GetComponent<Animation>().Play();
 
             Rigidbody2D BallRB = Collider.gameObject.GetComponent<Rigidbody2D>();
             Vector2 BallForce = Collider.gameObject.transform.position - this.transform.position;// ball -player
             float Magnitude = Mathf.Sqrt(Mathf.Pow(BallForce.x, 2) + Mathf.Pow(BallForce.y, 2));
 
 
-            BallRB.AddForce(new Vector2(KickSpeed * BallForce.x / Magnitude, KickSpeed * BallForce.y / Magnitude));
-
+            BallRB.AddForce(new Vector2(KickSpeed * BallForce.x / Magnitude, KickSpeed * BallForce.y / Magnitude));            
             
         }
     }
